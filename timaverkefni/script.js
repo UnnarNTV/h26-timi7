@@ -11,6 +11,7 @@ function convert() {
   // 1. Ná í textann úr input "celsius"
   const hitiText = document.getElementById("celsius").value;
 
+  const nafn = document.getElementById("name").value;
   const vindur = Number(document.getElementById("wind").value);
   const adgerd = document.getElementById("convert-method").value;
 
@@ -19,6 +20,8 @@ function convert() {
   if (hitiText === "") {
     return (document.getElementById("output").innerText =
       "Sláðu inn hitastig!");
+  } else if (nafn === "") {
+    return (document.getElementById("output").innerText = "Sláðu inn nafn!");
   }
 
   let celcius = 0;
@@ -39,7 +42,7 @@ function convert() {
 
   if (celcius < 5 && vindur > 10) {
     return (document.getElementById("output").innerText =
-      "Brjálað veður, vertu heima!");
+      `${nafn}, brjálað veður, vertu heima!`);
   }
 
   // 5. Nota if / else til að velja skilaboð:
@@ -47,15 +50,15 @@ function convert() {
   //    0 til 10°C         → "Kalt, úlpuveður"
   //    yfir 10 upp í 20°C → "Fínt veður, taktu peysu"
   //    yfir 20°C          → "Stuttbuxnaveður!"
-  let message = "";
+  let message = nafn;
   if (celcius < 0) {
-    message = "Frost! Húfa og vettlingar";
+    message += ", frost! Húfa og vettlingar";
   } else if (celcius <= 10) {
-    message = "Kalt, úlpuveður";
+    message += ", kalt, úlpuveður";
   } else if (celcius <= 20) {
-    message = "Fínt veður, taktu peysu";
+    message += ", fínt veður, taktu peysu";
   } else {
-    message = "Stuttbuxnaveður";
+    message += ", stuttbuxnaveður";
   }
 
   if (adgerd === "cToF") {
