@@ -33,11 +33,13 @@ function convert() {
 
     // 4. Reikna Fahrenheit: c * 1.8 + 32
     fahrenheit = celcius * 1.8 + 32;
+    fahrenheit = fahrenheit.toFixed(1);
   } else if (adgerd === "fToC") {
     fahrenheit = Number(hitiText);
 
     // Reikna celcius
     celcius = (fahrenheit - 32) / 1.8;
+    celcius = celcius.toFixed(1);
   }
 
   if (celcius < 5 && vindur > 10) {
